@@ -1,0 +1,20 @@
+{% extends "::layout/base.html.twig" %}
+{% block body %}
+<body>
+<h2> <strong> Envoyer une reclamtion</strong> </h2>
+<hr>
+
+<p>{{form_errors(form)}}</p>
+<hr>
+<form id="fr" method="POST" action='{{path('my_app_reclamation_sendpage')}}' {{form_enctype(form)}}>
+    <table>
+        <tr><td>Reclamation : </td></tr>
+        <tr><td>From : </td><td><input type="text" name="from"></td></tr>
+        <tr><td>Message : </td><td><input type="text" name="message"></td></tr>
+        
+            <button type="submit" class="btn btn-info">Valider</button>
+    </table>
+
+</form>
+</body>
+ {% endblock %}

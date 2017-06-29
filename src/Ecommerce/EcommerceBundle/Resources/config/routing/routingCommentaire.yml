@@ -1,0 +1,12 @@
+commentaire_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Commentaire:edit" }
+
+commentaire_update:
+    path:     /{id}/update
+    defaults: { _controller: "EcommerceBundle:Commentaire:update" }
+    methods:  [POST, PUT]
+
+commentaire_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Commentaire:delete" }

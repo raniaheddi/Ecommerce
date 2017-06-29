@@ -1,0 +1,151 @@
+{% extends "::layout/base.html.twig" %}
+
+{% block body %}
+    <!-- content-section-starts -->
+    <div class="container">
+        <div class="products-page">
+            
+            <div class="new-product">
+                <div class="col-md-5 zoom-grid">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li data-thumb="{{ produit.image.AssetPath|imagine_filter('produit') }}">
+                                <div class="thumb-image"> <img src="{{ produit.image.AssetPath|imagine_filter('produit') }}" data-imagezoom="true" class="img-responsive" alt="{{ produit.image.name }}" /> </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-7 dress-info">
+                    <div class="dress-name">
+                        <h3>{{ produit.nom }}</h3>
+                        <span>{{ produit.prix }} DT</span>
+                        <div class="clearfix"></div>
+                        <p>{{ produit.description }}</p>
+
+                    </div>
+
+                    </br>
+                    <div class="span span2">
+                        {#  {% if panier[produit.id] is not defined %} #}
+                        <form action="{{ path('ajouter', { 'id' : produit.id }) }}" method="get">
+                            <p class="left "><span class="selection-box">
+                                    <select name="qte" class="domains valid">
+                                        {% for i in 1..10 %}
+                                            <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select></span></p>
+                            <p class="right">
+                            <div>  
+                                <button class="btn btn-info">Ajouter au panier</button>
+                            </div>
+                        </form>
+                        {#   {% else %}
+                              <div>
+                                  <a href="{{ path('panier') }}" class="btn-primary">Le produit est déjà dans votre panier</a>
+  
+                              </div>
+                          {% endif %} #}
+                        </p>
+                        <div class="clearfix"></div>
+                    </div>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <div>
+                            <a class="btn btn-info" href="{{path('favoris_create',{'id':favoris.id,'produit':produit.id})}}">Favoris</a>
+                            <div class="clearfix"></div>
+                        </div>
+                    {% endif %}
+                    <script src="{{ asset('bundles/EcommerceBundle/js/imagezoom.js')}}"></script>
+                    <!-- FlexSlider -->
+                    <script defer src="{{ asset('bundles/EcommerceBundle/js/jquery.flexslider.js')}}"></script>
+                    <script>
+                        // Can also be used with $(document).ready()
+                        $(window).load(function () {
+                            $('.flexslider').flexslider({
+                                animation: "slide",
+                                controlNav: "thumbnails"
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="clearfix"></div>
+                <div class="reviews-tabs">
+                    <!-- Main component for a primary marketing message or call to action -->
+                    <ul class="nav nav-tabs responsive hidden-xs hidden-sm" id="myTab">
+                        <li class="test-class"><a class="deco-none" href="#source">Avis</a></li>
+                    </ul>
+
+                    <div class="tab-content responsive hidden-xs hidden-sm">
+                        <div class="tab-pane" id="source">
+                            <div class="response">
+                                <div class="clearfix"> </div>
+                                <form method="post">
+                                    {% for entity in entities %}
+                                        <div class="media response-info">
+                                            <div class="media-left response-text-left">
+                                                <h5><a href="#">{{ entity.user.username }}</a></h5>
+                                            </div>
+                                            <div class="media-body response-text-right">
+                                                <p>{{ entity.corps }}</p>
+                                                <ul>
+                                                    <li>{{ entity.dateCom|date('y-m-d')}} </li>
+                                                    <li> {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                                        {% if entity.user.id == utilisateur.id %}
+                                                            <a href="{{path('commentaire_delete',{'id':entity.id})}}"> Supprimer</a>		
+                                                        </li>
+                                                    {% endif %}  
+                                                    {% endif %}
+                                                    </ul>		
+                                                </div>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            {% endfor %}
+                                                <div class="toogle">
+
+                                                    <p class="m_text">
+                                                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                                        <div class="controls">             
+                                                            {{ form_widget(form.Corps)}}
+                                                        </div>
+                                                        </p>
+                                                        <div class="form-actions align-right">
+                                                            </br><button type="submit" class="btn btn-info">Commenter</button>
+                                                            <ul class="record_actions" style="display: inline-block"></ul>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>  
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>		
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+
+                <script src="{{asset('bundles/EcommerceBundle/js/responsive-tabs.js')}}"></script>
+                <script type="text/javascript">
+                        $('#myTab a').click(function (e) {
+                            e.preventDefault();
+                            $(this).tab('show');
+                        });
+
+                        $('#moreTabs a').click(function (e) {
+                            e.preventDefault();
+                            $(this).tab('show');
+                        });
+
+                        (function ($) {
+                            // Test for making sure event are maintained
+                            $('.js-alert-test').click(function () {
+                                alert('Button Clicked: Event was maintained');
+                            });
+                            fakewaffle.responsiveTabs(['xs', 'sm']);
+                        })(jQuery);
+
+                </script>
+            </body>
+        </html>
+        {% endblock %}

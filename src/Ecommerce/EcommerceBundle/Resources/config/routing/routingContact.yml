@@ -1,0 +1,19 @@
+mail:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Contact:index" }
+
+mail_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Contact:show" }
+
+my_app_mail_succ:
+    path: /succ
+    defaults: { _controller: EcommerceBundle:Contact:index }
+
+my_app_mail_form:
+    path: /mail
+    defaults: { _controller: EcommerceBundle:Contact:new }
+
+my_app_mail_sendpage:
+    path: /sendmail
+    defaults: { _controller: EcommerceBundle:Contact:sendMail }

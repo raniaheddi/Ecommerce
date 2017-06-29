@@ -1,0 +1,33 @@
+sujet:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Sujet:index" }
+    
+detail_sujet:
+    path:     /{sujet}/detail
+    defaults: { _controller: "EcommerceBundle:Sujet:DetailSujet" }
+  
+sujet_show-All:
+    path:     /showAll
+    defaults: { _controller: "EcommerceBundle:Sujet:showAll" }
+
+sujet_create:
+    path:     /create
+    defaults: { _controller: "EcommerceBundle:Sujet:create" }
+
+sujet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PiDevClientBundle:Sujet:edit" }
+
+sujet_update:
+    path:     /{id}/update
+    defaults: { _controller: "EcommerceBundle:Sujet:update" }
+    requirements: { _method: post|put }
+
+    
+sujet_image:
+    path:     /{id}/image
+    defaults: { _controller: "EcommerceBundle:Sujet:AfficheImage" }
+    
+sujet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Sujet:delete" }

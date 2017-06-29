@@ -1,0 +1,68 @@
+{% extends "::layout/base.html.twig" %}
+
+{% block body %}
+
+    </br>
+    </br>
+    {% if produits is empty  %}
+    </div>
+    <div class="register_account">
+        <div class="wrap">
+            <h4 class="title">Votre liste d'envie est vide</h4>
+            <p class="cart">Vous n'avez aucun produit dans votre liste.<br>Cliquer<a href="{{ path('produits') }}"> ici</a> 
+                pour continuer le shopping</p>
+        </div>
+    </div>
+
+
+{% else %}
+    <ul class="record_actions ">
+        <li>
+            <a href="{{ path('produits') }}"class="btn btn-success ">
+                Continuer vos achats
+            </a>    
+        </li>
+    </ul>
+
+
+
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+
+            <h3 class="panel-title">Vos Favoris</h3>
+        </div>
+        <!-- Table -->
+        <table class="table table-striped panel panel-info">
+            <thead>
+            <th class="info"></th>
+            <th class="info">Nom</th>
+            <th class="info">Prix</th>
+            <th class="info">Déscription</th>
+            <th class="info">Détail</th>
+            <th class="info">Retirer</th>
+            </thead>
+
+            <tbody> 
+                {% for i in produits %}            
+                    <tr>
+                        <td>
+                            <img src="{{ i.image.AssetPath|imagine_filter('produit') }}" alt="{{ i.image.name }}" width="150" height="100">
+                        </td>
+
+                        <td>{{ i.nom}}</td>
+                        <td>{{ i.prix}} DT</td>
+                        <td>{{ i.description|slice(0,50)}}</td>
+                        <td>  <a href={{ path('presentation', { 'id': i.id }) }}>Détail</a></td>
+                        <td><a href="{{ path('favoris_remove', { 'id': entity.favoris.id ,
+                                   'produit': i.id }  ) }}">retirer</a></td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+{% endif %}      
+
+{% endblock %}

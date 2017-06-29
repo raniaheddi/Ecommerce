@@ -1,0 +1,15 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body -%}
+    <h1>Ajouter Catégories</h1>
+
+    {{ form(form) }}
+
+    <dl class="record_actions">
+        <dt>
+            <a href="{{ path('adminCategories') }}" class="btn">
+                Retour à la liste
+            </a>
+        </dt>
+    </dl>
+{% endblock %}

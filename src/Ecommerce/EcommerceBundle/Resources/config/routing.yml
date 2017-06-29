@@ -1,0 +1,55 @@
+routingReclamation:
+    resource: "@EcommerceBundle/Resources/config/routing/routingReclamation.yml"
+    prefix:   /reclamation  
+
+routingFavoris:
+    resource: "@EcommerceBundle/Resources/config/routing/routingFavoris.yml"
+    prefix:   /favoris
+    
+routingCommentaireProduit:
+    resource: "@EcommerceBundle/Resources/config/routing/routingCommentaire.yml"
+    prefix:   /commentaireProduit
+
+routingCommentaireSujet:
+    resource: "@EcommerceBundle/Resources/config/routing/routingCommentairesujet.yml"
+    prefix:   /comentaireSujet
+    
+routingSujet:
+    resource: "@EcommerceBundle/Resources/config/routing/routingSujet.yml"
+    prefix:   /forum
+    
+routingContact:
+    resource: "@EcommerceBundle/Resources/config/routing/routingContact.yml"
+    prefix:   /contact
+
+routingAdmin:
+  resource: "@EcommerceBundle/Resources/config/routing/routingAdmin.yml"
+  prefix: /admin
+
+routingPanier:
+  resource: "@EcommerceBundle/Resources/config/routing/routingPanier.yml"
+  prefix: /panier
+
+routingProduits:
+  resource: "@EcommerceBundle/Resources/config/routing/routingProduits.yml"
+  prefix: /
+
+routingProduitsAdmin:
+  resource: "@EcommerceBundle/Resources/config/routing/routingProduitsAdmin.yml"
+  prefix: /admin/produits
+  
+routingCategoriesAdmin:
+    resource: "@EcommerceBundle/Resources/config/routing/routingCategoriesAdmin.yml"
+    prefix:   /admin/categories
+
+routingCommandesAdmin:
+  resource: "@EcommerceBundle/Resources/config/routing/routingCommandesAdmin.yml"
+  prefix: /admin/commandes
+
+routingCommandes:
+  resource: "@EcommerceBundle/Resources/config/routing/routingCommandes.yml"
+  prefix: /
+
+routingStatistiqueAdmin:
+  resource: "@EcommerceBundle/Resources/config/routing/routingStatistique.yml"
+  prefix: /admin/statistique

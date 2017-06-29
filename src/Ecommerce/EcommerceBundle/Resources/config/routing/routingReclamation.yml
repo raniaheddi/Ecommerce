@@ -1,0 +1,19 @@
+reclamation:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Reclamation:index" }
+
+reclamation_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Reclamation:show" }
+
+my_app_reclamation_succ:
+    path: /succ
+    defaults: { _controller: EcommerceBundle:Reclamation:index }
+
+my_app_reclamation_form:
+    path: /reclamation
+    defaults: { _controller: EcommerceBundle:Reclamation:new }
+
+my_app_reclamation_sendpage:
+    path: /sendreclamation
+    defaults: { _controller: EcommerceBundle:Reclamation:sendReclamation }

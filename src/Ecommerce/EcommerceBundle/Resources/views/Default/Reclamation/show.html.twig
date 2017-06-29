@@ -1,0 +1,42 @@
+{% extends "::layout/base.html.twig" %}
+
+{% block body %}
+    <h1>Reclamation</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ entity.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ entity.tel }}</td>
+            </tr>
+            <tr>
+                <th>From</th>
+                <td>{{ entity.from }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ entity.text }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('reclamation') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

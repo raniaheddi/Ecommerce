@@ -1,0 +1,52 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Liste Des Produits</h1>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Disponible</th>
+                <th>Quantite</th>
+                <th>Promotion</th>
+                <th>Marque</th>
+                <th>Actions</th>
+                <th>Catalogue</th>         
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.nom }}</td>
+                    <td>{{ entity.prix }}</td>
+                    <td>{{ entity.disponible }}</td>
+                    <td>{{ entity.quantite }}</td>
+                    <td>{{ entity.promotion }}</td>
+                    <td>{{ entity.marque }}</td>
+                    <td>
+                        <a href="{{ path('adminProduits_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>
+                        <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
+                        <a href="{{ path('adminProduits_catalogue', { 'id': entity.id }) }}">  
+                    </td>
+                    <td>
+                        {% if entity.catalogue==true %}<a href="{{ path('adminProduits_catalogue', { 'id': entity.id }) }}">
+                                <i class="icon-check"></i></a> 
+                        {% else %}<a href="{{ path('adminProduits_catalogue', { 'id': entity.id }) }}">
+                                <i class="icon-check-empty"></i> </a>
+                            {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <dl>
+        <dt>
+            <a href="{{ path('adminProduits_new') }}" class="btn">
+                Nouveau produit
+            </a>
+        </dt>
+    </dl>
+{% endblock %}

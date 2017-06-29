@@ -1,0 +1,146 @@
+{% extends "::layout/base.html.twig" %}
+
+{% block body %}
+    <link href="{{ asset('bundles/EcommerceBundle/css/component.css') }}" rel='stylesheet' type='text/css' />
+
+    <!-- content-section-starts -->
+
+    <div class="container">
+        <div class="products-page">
+            <div class="products">
+                <div class="product-listy">
+                    {% include '::modulesUsed/navigation.html.twig' %}
+
+                </div>
+            </div>
+            <div class="new-product">
+                <div class="new-product-top">
+                    <ul class="product-top-list">
+                        <li><a href="{{ path('index') }}">Accueil</a>&nbsp;<span>&gt;</span></li>
+                        <li><span class="act">Liste des Produits</span>&nbsp;</li>
+                    </ul>
+                    <p class="back"><a href="{{ path('produits') }}">Retour au précédent</a></p>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="mens-toolbar">
+                    <div class="sort">
+                        <div class="sort-by">
+                            <label>Trier Par</label>
+                            <select>
+                                <option value="">Nom</option>
+                                <option value="">Prix</option>
+                            </select>
+                            <a href=""><img src={{ asset('bundles/EcommerceBundle/images/arrow2.gif')}} alt="" class="v-middle"></a>
+                        </div>
+                    </div>
+                    <ul class="women_pagenation">                       
+                        {{ knp_pagination_render(produits) }}
+
+                    </ul>
+                    <div class="clearfix"></div>		
+                </div>
+                <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+                    <div class="cbp-vm-options">
+                        <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid" title="grid">Grid View</a>
+                        <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list" title="list">List View</a>
+                    </div>
+                    <div class="clearfix"></div>
+                    {% if produits|length != 0 %}
+                        <ul>
+                            {% for produit in produits %}
+                                <li>
+                                    <a class="cbp-vm-image" href="{{ path('presentation', { 'id' : produit.id }) }}">
+                                        <div class="simpleCart_shelfItem">
+                                            <div class="view view-first">
+                                                <div class="inner_content clearfix">
+                                                    <div class="product_image">  
+                                                        <div class="thumb-image"> <img src="{{ produit.image.AssetPath|imagine_filter('produit') }}" data-imagezoom="true" class="img-responsive" alt="{{ produit.image.name }}" /> 
+                                                        </div>
+                                                        <div class="mask">
+                                                            <div class="info">Fiche Technique</div>
+                                                        </div>
+                                                        <div class="product_container">
+                                                            <div class="cart-left">
+                                                                <p class="title">{{ produit.nom }}</p>
+                                                            </div>
+                                                            <div class="pricey"><span class="item_price">{{ produit.prix }} DT</span></div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </a>
+                                    <div class="cbp-vm-details">
+                                        {{ produit.description [0:100]}}
+                                    </div>
+                                    {% if panier[produit.id] is not defined %}
+                                        <a class="cbp-vm-icon cbp-vm-add item_add" href="{{ path('ajouter', { 'id' : produit.id }) }}">Ajouter au panier</a>
+                                    {% endif %}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+
+                    </div>
+                    <script src={{ asset('bundles/EcommerceBundle/js/cbpViewModeSwitch.js')}} type="text/javascript"></script>
+                    <script src={{ asset('bundles/EcommerceBundle/js/classie.js')}} type="text/javascript"></script>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+
+    {% else %}
+        Aucun produit
+    {% endif %}
+    {% if catalogue|length != 0 %}                      
+        <div class="other-products">
+            <div class="container">
+                <h3 class="like text-center">Nouvelle Collection</h3>        			
+                <ul id="flexiselDemo3">
+                    {% for produit in catalogue %}
+                        <li><a href="{{ path('presentation', { 'id' : produit.id }) }}">
+                                <div class="thumb-image"> <img src="{{ produit.image.AssetPath|imagine_filter('produit') }}" data-imagezoom="true" class="img-responsive" alt="{{ produit.image.name }}" /> 
+                                </div>   </a>
+                            <div class="product liked-product simpleCart_shelfItem">
+                                <a class="like_name" href="{{ path('presentation', { 'id' : produit.id }) }}">{{ produit.nom }}</a>
+                                <p><a class="item_add" href="#"><i></i> <span class=" item_price">{{ produit.prix }} DT</span></a></p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <script type="text/javascript">
+                    $(window).load(function () {
+                        $("#flexiselDemo3").flexisel({
+                            visibleItems: 4,
+                            animationSpeed: 1000,
+                            autoPlay: true,
+                            autoPlaySpeed: 3000,
+                            pauseOnHover: true,
+                            enableResponsiveBreakpoints: true,
+                            responsiveBreakpoints: {
+                                portrait: {
+                                    changePoint: 480,
+                                    visibleItems: 1
+                                },
+                                landscape: {
+                                    changePoint: 640,
+                                    visibleItems: 2
+                                },
+                                tablet: {
+                                    changePoint: 768,
+                                    visibleItems: 3
+                                }
+                            }
+                        });
+
+                    });
+                </script>
+                <script type="text/javascript" src="{{ asset('bundles/EcommerceBundle/js/jquery.flexisel.js') }}"></script>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "::layout/base.html.twig" %}
+{% block body %}
+    <!-- start details -->
+    <script src="{{asset('js2/slides.min.jquery.js')}}"></script>
+    <script>
+        $(function () {
+            $('#products').slides({
+                preload: true,
+                preloadImage: 'img/loading.gif',
+                effect: 'slide, fade',
+                crossfade: true,
+                slideSpeed: 350,
+                fadeSpeed: 500,
+                generateNextPrev: true,
+                generatePagination: false
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="{{asset('css2/etalage.css')}}">
+    <script src="{{asset('js2/jquery.etalage.min.js')}}"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+
+            $('#etalage').etalage({
+                thumb_image_width: 360,
+                thumb_image_height: 360,
+                source_image_width: 900,
+                source_image_height: 900,
+                show_hint: true,
+                click_callback: function (image_anchor, instance_id) {
+                    alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+                }
+            });
+
+        });
+    </script>	
+    asset('images/s-img.jpg')
+    <div class="main">
+        <div class="wrap">
+            <ul class="breadcrumb breadcrumb__t"><a class="home" href="{{ path('produit') }}">Accueil</a>
+                / <a href="{{ path('produit') }}">Produit</a></ul>
+            <div class="cont span_2_of_3">
+                <div class="grid images_3_of_2">
+                    <img class="etalage5_thumb_image" src="{{entity.urlImage}}" class="img-responsive" />
+
+                    <div class="clearfix"></div>
+                </div>
+                <div class="desc1 span_3_of_2">
+                    <h3 class="m_3">{{ entity.nom }}</h3>
+                    <p class="m_5">Prix. {{ entity.prix }} DT<span class="reducedfrom">{{ entity.prix }} DT</span> </p>
+
+                    <div class="availablelhg">
+                        <table class="record_properties">
+                            <tbody>
+
+
+                                <tr>
+                                    <th>Marque</th>
+                                    <td>{{ entity.marque }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Quantite en stock:</th>
+                                    <td>{{ entity.qantite }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Promotion</th>
+                                    <td>{{ entity.promotion }}%</td>
+                                </tr>                                
+                                <tr>
+                                    <th>---------------------------</th>
+                                    <td></td>
+                                </tr>                     
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="m_text2">{{ entity.description }}</p>
+                    <div class="btn_form">
+                        <a href="{{path('favoris_create',{'id':favoris.id,'produit':entity.id})}}">Ajouter au panier</a>
+                        <a href="{{path('panier_create',{'id':panier.id,'produit':entity.id})}}">Favoris</a>			
+                    </div>
+                </div>
+
+                <div class="clear"></div>	
+                <div class="clients">
+
+                    </script>
+                    <script type="text/javascript" src="{{asset('js/jquery.flexisel.js')}}"></script>
+                </div>
+                <div class="toogle">
+                    <h3 class="m_3">Commentaires</h3>
+                </div>
+
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

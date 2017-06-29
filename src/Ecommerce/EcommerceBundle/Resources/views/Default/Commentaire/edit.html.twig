@@ -1,0 +1,16 @@
+{% extends "::layout/base.html.twig" %}
+
+{% block body %}
+    <h1>Modifier Commentaire</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('commentaire') }}">
+            Retour à la liste
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

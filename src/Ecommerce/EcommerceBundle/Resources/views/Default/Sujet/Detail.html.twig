@@ -1,0 +1,112 @@
+{% extends "::layout/base.html.twig" %}
+
+{% block body %}
+    <html>
+        <head>
+            <title>Ecommerce </title>
+
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <link href={{asset('font-awesome-4.5.0/css/font-awesome.css')}} rel="stylesheet" type="text/css" media="all" />
+            <link href={{asset('font-awesome-4.5.0/css/font-awesome.min.css')}} rel="stylesheet" type="text/css" media="all" />
+            <link href={{asset('css2/bootstrap-theme.css')}} rel="stylesheet" type="text/css" media="all" />
+            <link href={{asset('css2/style.css')}} rel="stylesheet" type="text/css" media="all" />
+            <link href={{asset('css2/form.css')}} rel="stylesheet" type="text/css" media="all" />
+            <link href={{asset('css2/bootstrap.css')}} rel="stylesheet" type="text/css" media="all" />  
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/style.css') }}" />
+            <link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+            <script type="text/javascript" src={{asset('js/jquery1.min.js')}}></script>
+            <!-- start menu -->
+            <link href={{asset('css2/megamenu.css')}} rel="stylesheet" type="text/css" media="all" />
+            <script type="text/javascript" src={{asset('js2/megamenu.js')}}></script>
+            <script  src={{asset('js2/Megamenufunction.js')}} ></script>
+            <!--start slider -->
+            <link rel="stylesheet" href={{asset('css2/fwslider.css')}} media="all">
+            <script src={{asset('js2/jquery-ui.min.js')}} ></script>
+            <script src={{asset('js2/css3-mediaqueries.js')}}></script>
+            <script src={{asset('js2/fwslider.js')}}></script>
+            <script src={{asset('js2/jquery.easydropdown.js')}}></script>
+            <script src={{asset('bundles/commande/js/bootstrap.min.js')}}></script>
+            <script src={{asset('bundles/commande/js/customjs.js')}}></script>
+            <link rel="stylesheet" href={{asset('bundles/commande/css/bootstrap.min.css')}} type="text/css" media="all" /> 
+            <link rel="stylesheet" href={{asset('bundles/commande/css/custom.css')}} type="text/css" media="all" /> 
+            <!--end slider -->
+            <link rel="stylesheet" href="{{asset('css2/style.css')}}">
+
+            <script src={{asset('js2/jquery.load.js')}}></script>
+            <script src={{asset('js2/jquery.ready.js')}}></script>
+            <script src={{asset('js2/jquery.slides.js')}}></script>
+            <!-- start details -->
+            <script src={{asset('js2/slides.min.jquery.js')}}></script>
+
+            <link rel="stylesheet" href={{asset('css2/etalage.css')}}>
+            <script src={{asset('js2/jquery.etalage.min.js')}}></script>
+
+        </head>
+        <body>
+
+            <div class="mens">    
+                <div class="main">
+                    <div class="wrap">
+                        <div class="cont span_2_of_3">
+                            <div class="clear"></div>	
+
+                            <div class="toogle">
+
+                                <h1>{{sujet.titre}}</h1>
+                                <p class="lead">by <a>{{sujet.user.username}}</a></p>
+                                <hr>
+                                <p><i class="fa fa-calendar"></i> Publié le {{sujet.dateAjout|date('j M \\à g:ia \\e\\n Y ')}}</p>
+                                <hr>
+                                <center>     <img src="{{path('sujet_image',{'id':sujet.id})}}" width="200px" height="100px" class="img-responsive">
+                                </center>   <hr>
+                                {{sujet.sujet|raw}}
+
+                                <hr>
+                                <h3 class="m_3">Commentaires</h3> 
+                                <div class="well">
+                                    <h4>Ajouter un commentaire:</h4>
+                                    <form name="commentaire" action="{{path('detail_sujet',{'sujet':sujet.id})}}" method="post">
+                                        <div class="form-group">
+                                            {{ form_widget(form.commentaire)}}
+                                        </div>
+                                        <button type="submit" action="{{path('detail_sujet',{'sujet':sujet.id})}}" class="btn btn-info"><i class="fa fa-comment"></i> Commenter</button>
+                                    </form>
+                                </div>
+                                <hr>
+                                <div>
+
+                                    {% for entity in entities %}
+
+                                        <h4> {{ entity.user.username }}: <small>{{entity.DateCom|date('Y-m-d H:i:s')}}</small>
+                                            {% if entity.user.id == utilisateur.id %}
+                                                <span class="popbtn"><a class="arrow"></a></span></h4>
+                                                {% endif %}
+                                        <p>{{ entity.commentaire }} </p> 
+
+
+                                        {% if entity.user.id == utilisateur.id %}
+                                            <div id="popover" style="display: none">
+                                                <a href="{{path('commentairesujet_edit',{'id':entity.id})}}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                                <a href="{{path('commentairesujet_delete',{'id':entity.id})}}"><span class="glyphicon glyphicon-remove"></span></a>			
+
+                                            </div>
+
+
+
+                                        {% endif %}  
+                                        <hr>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

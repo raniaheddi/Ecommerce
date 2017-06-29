@@ -1,0 +1,27 @@
+favoris:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Favoris:index" }
+
+favoris_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Favoris:show" }
+
+favoris_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:Favoris:new" }
+
+favoris_create:
+    path:     /{id}/{produit}/create
+    defaults: { _controller: "EcommerceBundle:Favoris:create" }
+favoris_remove:
+    path:     /{id}/{produit}/remove
+    defaults: { _controller: "EcommerceBundle:Favoris:remove" }
+favoris_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Favoris:edit" }
+favoris_update:
+    path:     /{id}/update
+    defaults: { _controller: "EcommerceBundle:Favoris:update" }
+favoris_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Favoris:delete" }

@@ -1,0 +1,38 @@
+{% extends "::layout/base.html.twig" %}
+{% block body %}
+    <h1>Mail list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Tel</th>
+                <th>From</th>
+                <th>Text</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('mail_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.prenom }}</td>
+                <td>{{ entity.tel }}</td>
+                <td>{{ entity.from }}</td>
+                <td>{{ entity.text }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('mail_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

@@ -1,0 +1,82 @@
+{% extends "::layout/base.html.twig" %}
+
+{% block body -%}
+
+<h5 class="widget-name"><i class="icon-th"></i>Commenter un nouveau produit </h5>
+
+<div class="media row-fluid">
+    {{ form_errors(form) }}
+    <form id="validate" class="form-horizontal" method="post" action="{{path('commentaire_create',{'id':entity.id,'produit':produit.id})}}">
+        <fieldset>
+        <!-- Form validation -->
+             <div class="widget">
+	       
+	         <div class="well row-fluid">
+                         <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{produit.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ produit.nom }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ produit.marque }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ produit.description }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ produit.prix }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ produit.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Promotion</th>
+                <td>{{ produit.promotion }}</td>
+            </tr>
+            <tr>
+                <th>Nbrpoint</th>
+                <td>{{ produit.nbrpoint }}</td>
+            </tr>
+
+        </body>
+    </table>
+           
+          <div class="control-group">
+            <label class="control-label">Corps<span class="text-error">*</span></label>
+            <div class="controls">             
+                       {{ form_widget(form.Corps)}}
+                
+            </div>
+        </div>                     
+                       
+        <div class="form-actions align-right">
+            {{ form_widget(form._token) }}
+            <button type="submit" class="btn btn-info">Valider</button>
+
+            <button type="reset" class="btn">Reset</button>
+            <ul class="record_actions" style="display: inline-block">
+            <li>
+                <a href="{{ path('commentaire') }}">
+                    Retour à l'accueil
+                </a>
+            </li>
+        </ul>
+        </div>
+        
+    </div>
+  </div>
+	              
+        </fieldset>
+</form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+
+    <div class="content">
+        <div class="container">
+            <div class="login-page">
+                <div class="account_grid">
+                    <div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
+                        <h2>NOUVEAUX CLIENTS</h2>
+                        <p>En créant un compte sur notre boutique, vous serez en mesure de se déplacer 
+                            à travers le processus de paiement plus rapide, stocker les adresses de livraison 
+                            multiples, consulter et suivre vos commandes dans votre compte et plus encore.</p>
+
+                        <a class="acount-btn" href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+                    </div>
+                    <div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
+                        <h3>CLIENTS ENREGISTRÉS</h3>
+                        <p>Si vous avez un compte avec nous, s'il vous plaît connecter.</p>
+                        <form action="{{ path("fos_user_security_check") }}" method="post">
+                            <div>
+                                <h4>{{ 'security.login.username'|trans }}<label>*</label></h4>
+                                <input type="text"  name="_username" value="{{ last_username }}" required="required" />
+
+                            </div>
+                            <div>
+                                <h4>{{ 'security.login.password'|trans }}<label>*</label></h4>
+                                <input type="password"  name="_password" required="required" />
+                            </div>
+                            <a class="forgot" href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>     
+                            <input type="submit" value="{{ 'security.login.submit'|trans }}">
+                        </form>
+                    </div>	
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

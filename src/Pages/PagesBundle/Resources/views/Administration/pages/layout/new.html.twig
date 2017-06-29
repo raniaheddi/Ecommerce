@@ -1,0 +1,17 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body -%}
+<h2>Ajouter Page</h2>
+<div class="span9">
+    {{ form(form) }}
+</div>
+<div class="span12">
+    <dl class="record_actions">
+        <dt>
+            <a href="{{ path('adminPages') }}" class="btn">
+                Retour
+            </a>
+        </dt>
+    </dl>
+</div>
+{% endblock %}

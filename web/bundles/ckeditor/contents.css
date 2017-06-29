@@ -1,0 +1,125 @@
+.my-container
+{
+    /* Font */
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+    font-size: 12px;
+
+    /* Text color */
+    color: #333;
+
+    /* Remove the background color to make it transparent */
+    background-color: #fff;
+
+    margin: 20px;
+}
+
+.my-container .cke_editable
+{
+    font-size: 13px;
+    line-height: 1.6em;
+}
+
+.my-container blockquote
+{
+    font-style: italic;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    padding: 2px 0;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 0;
+}
+
+.my-container .cke_contents_ltr blockquote
+{
+    padding-left: 20px;
+    padding-right: 8px;
+    border-left-width: 5px;
+}
+
+.my-container .cke_contents_rtl blockquote
+{
+    padding-left: 8px;
+    padding-right: 20px;
+    border-right-width: 5px;
+}
+
+.my-container a
+{
+    color: #0782C1;
+}
+
+.my-container ol,.my-container ul,.my-container dl
+{
+    /* IE7: reset rtl list margin. (#7334) */
+    *margin-right: 0px;
+    /* preserved spaces for list items with text direction other than the list.    (#6249,#8049)*/
+    padding: 0 40px;
+}
+
+.my-container h1,.my-container h2,.my-container h3,.my-container h4,.my-container h5,.my-container h6
+{
+    font-weight: normal;
+    line-height: 1.2em;
+}
+
+.my-container hr
+{
+    border: 0px;
+    border-top: 1px solid #ccc;
+}
+
+.my-container img.right
+{
+    border: 1px solid #ccc;
+    float: right;
+    margin-left: 15px;
+    padding: 5px;
+}
+
+.my-container img.left
+{
+    border: 1px solid #ccc;
+    float: left;
+    margin-right: 15px;
+    padding: 5px;
+}
+
+.my-container pre
+{
+    white-space: pre-wrap; /* CSS 2.1 */
+    word-wrap: break-word; /* IE7 */
+}
+
+.my-container .marker
+{
+    background-color: Yellow;
+}
+
+.my-container span[lang]
+{
+   font-style: italic;
+}
+
+.my-container figure
+{
+    text-align: center;
+    border: solid 1px #ccc;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.05);
+    padding: 10px;
+    margin: 10px 20px;
+    display: block; /* For IE8 */
+}
+
+ figure figcaption
+{
+    text-align: center;
+    display: block; /* For IE8 */
+}
+
+.my-container a  img {
+	padding: 1px;
+	margin: 1px;
+	border: none;
+	outline: 1px solid #0782C1;
+}

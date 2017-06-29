@@ -1,0 +1,109 @@
+{% extends "::layout/base.html.twig" %}
+{% block body %}
+    
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <link href={{asset('css2/bootstrap-theme.css')}} rel="stylesheet" type="text/css" media="all" />
+            <link href={{asset('css2/style.css')}} rel="stylesheet" type="text/css" media="all" />
+            <link href={{asset('css2/form.css')}} rel="stylesheet" type="text/css" media="all" />
+            <link href={{asset('css2/bootstrap.css')}} rel="stylesheet" type="text/css" media="all" /> 
+            <script type="text/javascript" src={{asset('js2/jquery1.min.js')}}></script>
+            <!-- start menu -->
+            <link href={{asset('css2/megamenu.css')}} rel="stylesheet" type="text/css" media="all" />
+            <script type="text/javascript" src={{asset('js2/megamenu.js')}}></script>
+            <script  src={{asset('js2/Megamenufunction.js')}} ></script>
+            <!--start slider -->
+            <link rel="stylesheet" href={{asset('css2/fwslider.css')}} media="all">
+            <script src={{asset('js2/jquery-ui.min.js')}} ></script>
+            <script src={{asset('js2/css3-mediaqueries.js')}}></script>
+            <script src={{asset('js2/fwslider.js')}}></script>
+            <!--end slider -->
+            <script src={{asset('js2/jquery.easydropdown.js')}}></script>
+            <link href={{asset('bundles/backOffice/css/icons/icons.min.css')}} rel="stylesheet">
+            <link href={{asset('bundles/backOffice/css/bootstrap.min.css')}} rel="stylesheet">
+            <link href={{asset('bundles/backOffice/css/plugins.min.css')}} rel="stylesheet">
+            <script src={{asset('bundles/ckeditor/ckeditor.js')}} type="text/javascript"></script>
+
+        </head>
+        <body>
+
+            <div id="main-content">
+                <div class="row">
+                    <div class="col-lg-8 blog-results">
+                        <!-- blog entry -->
+                        <div class="panel panel-default">
+                            {% for entity in pagination %}
+                                {% set nb=0%}  
+                                <tr {% if loop.index is odd %}class="color"{% endif %}> 
+                                    {% for com in com %}
+                                        {% if com.sujet.id==entity.id %}
+                                            {% set nb=nb+1%}  
+                                        {% endif %}
+                                    {% endfor %} 
+                                <div class="panel-body" >
+                                    <h1><a href="{{path('detail_sujet',{'sujet':entity.id})}}" class="c-dark">{{entity.titre}}</a></h1>
+                                    <p class="lead">Par <a href="#">{{entity.user.username}}</a>
+                                    </p>
+                                    <hr>
+                                    <p>
+                                        <i class="fa fa-calendar"></i>  Publié le {{entity.dateAjout|date('j M \\à g:ia \\e\\n Y ')}} </p>
+                                    <i class="fa fa-comments"></i>  {{ nb }}
+                                    <hr>
+                                    <center><a {{path('detail_sujet',{'sujet':entity.id})}}>  <img src="{{path('sujet_image',{'id':entity.id})}}" width="200px" class="img-responsive">
+                                        </a> </center>  <hr>
+                                    <p> {{entity.sujet|slice(0,20)|raw}} </p>
+                                    <a class="btn btn-info" href="{{path('detail_sujet',{'sujet':entity.id})}}">Lire la suite <i class="fa fa-angle-right"></i> </a>
+
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                    </div>
+                    <!-- Ajouter sujet -->
+                    <div class="rsingle span_1_of_single">
+                        <h5 class="m_1">Ajouter un sujet</h5>
+                        <div class="panel panel-default">
+
+                            <div class="panel-body" >
+
+                                Si vous desirez ajouter un sujet clique au-dessous<br>
+                                <center>  <a href="{{path('sujet_create')}}" >  <button type="submit" action="{{path('sujet_create')}}" class="btn btn-info"><i class="fa fa-plus-square"></i>  Sujet</button></a>
+                                </center>   
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                </div>
+            </div>
+        </div>
+        <!-- END MAIN CONTENT -->
+    </div>
+    <!-- END WRAPPER -->
+</div>
+<!-- END WRAPPER -->
+
+
+<script src={{asset('plugins/jquery-1.11.js')}}></script>
+<script src={{asset('plugins/jquery-migrate-1.2.1.js')}}></script>
+<script src={{asset('plugins/jquery-ui/jquery-ui-1.10.4.min.js')}}></script>
+<script src={{asset('plugins/bootstrap/bootstrap.min.js')}}></script>
+<script src={{asset('plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js')}}></script>
+<script src={{asset('plugins/bootstrap-select/bootstrap-select.js')}}></script>
+<script src={{asset('plugins/icheck/icheck.js')}}></script>
+<script src={{asset('plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js')}}></script>
+<script src={{asset('plugins/mmenu/js/jquery.mmenu.min.all.js')}}></script>
+<script src={{asset('plugins/nprogress/nprogress.js')}}></script>
+<script src={{asset('plugins/charts-sparkline/sparkline.min.js')}}></script>
+<script src={{asset('plugins/breakpoints/breakpoints.js')}}></script>
+<script src={{asset('plugins/numerator/jquery-numerator.js')}}></script>
+<script src={{asset('js2/mailbox.js')}}></script>
+<!-- END MANDATORY SCRIPTS -->
+<script src={{asset('js2/application.js')}}></script>
+</body>
+<div class="navigation" align="center">
+    {{ knp_pagination_render(pagination) }} </div>
+<div class="clear"></div>
+{% endblock %}

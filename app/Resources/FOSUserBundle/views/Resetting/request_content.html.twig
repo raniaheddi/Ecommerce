@@ -1,0 +1,40 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="account_grid">
+
+    <div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
+        <h3>Mot de passe perdu</h3>
+        <h4>Vous avez perdu votre mot de passe ?</h4>
+        <span>
+            Compléter le formulaire, un email vous seras envoyé.<br />
+            Il contiendra la procèdure à suivre pour récupérer votre mot de passe.
+        </span>
+        <br/><br/><br/>
+
+        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+            <div>
+                <span>Nom d'utilisateur ou email<label>*</label></span>
+                <input type="text"  name="username" required="required" />
+            </div>
+
+            <input type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+
+        </form>
+    </div>>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

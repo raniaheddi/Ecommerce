@@ -1,0 +1,27 @@
+commentairesujet:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Commentairesujet:index" }
+
+commentairesujet_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Commentairesujet:show" }
+
+
+commentairesujet_create:
+    path:     /{sujet}/create
+    defaults: { _controller: "EcommerceBundle:Commentairesujet:AjouterCommentaireSujet" }
+
+
+commentairesujet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Commentairesujet:edit" }
+
+commentairesujet_update:
+    path:     /{id}/update
+    defaults: { _controller: "EcommerceBundle:Commentairesujet:update" }
+    requirements: { _method: post|put }
+
+commentairesujet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Commentairesujet:delete" }
+    requirements: { _Allow: Allow|delete }
